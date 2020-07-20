@@ -1,0 +1,15 @@
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          mock:
+            authorizationUri: http://localhost:8081/oauth2/authorize
+            tokenUri: http://localhost:8081/oauth2/token
+            userInfoUri: http://localhost:8081/oauth2/userinfo
+            jwkSetUri: http://localhost:8081/oauth2/keys
+        registration:
+          client-id: demo-client
+          client-secret: Secr3t
+          authorization-grant-type: authorization_code
+          scope: openid, profile

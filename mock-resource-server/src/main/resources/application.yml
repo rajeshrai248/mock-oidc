@@ -1,0 +1,11 @@
+server:
+  port: 8085
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          public-key-location: classpath:oidc.pub
+logging:
+  level:
+    org.springframework: debug
