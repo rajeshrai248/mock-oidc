@@ -1,5 +1,13 @@
+server:
+  port: 9443
 security:
   oauth2:
     client:
       client-id: client
       client-secret: secret
+    provider:
+      keystore-location: oidc.pem
+      keystore-pwd: 1234
+logging:
+  level:
+    org.springframework.security.oauth2: trace

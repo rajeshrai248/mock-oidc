@@ -1,15 +1,25 @@
+server:
+  port: 8081
+logging:
+  level:
+    org.springframework.security.oauth: trace
 spring:
   security:
     oauth2:
       client:
         provider:
           mock:
-            authorizationUri: http://localhost:8081/oauth2/authorize
-            tokenUri: http://localhost:8081/oauth2/token
-            userInfoUri: http://localhost:8081/oauth2/userinfo
-            jwkSetUri: http://localhost:8081/oauth2/keys
+            authorizationUri: http://localhost:9443/oauth2/authorize
+            tokenUri: http://localhost:9443/oauth2/token
+            userInfoUri: http://localhost:9443/oauth2/userinfo
+            jwkSetUri: http://localhost:9443/oauth2/keys
         registration:
-          client-id: demo-client
-          client-secret: Secr3t
-          authorization-grant-type: authorization_code
-          scope: openid, profile
+          mockClient:
+            provider: mock
+            client-id: "client"
+            client-secret: "Secr3t"
+            authorization-grant-type: "authorization_code"
+            redirectUri: http://localhost:8081/login/oauth2/code/mock
+            scope:
+              - "openid"
+              - "profile"

@@ -1,5 +1,12 @@
 package com.realdolmen.oidc.provider.configuration;
 
+import java.io.IOException;
+import java.security.GeneralSecurityException;
+import java.security.KeyPair;
+import java.security.PublicKey;
+import org.apache.tomcat.util.net.jsse.PEMFile;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -10,25 +17,27 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
-import java.security.KeyPair;
+import static org.apache.logging.log4j.util.Strings.isEmpty;
 
 @Configuration
 public class JwkSetConfiguration extends AuthorizationServerConfigurerAdapter {
 
-    AuthenticationManager authenticationManager;
-    KeyPair keyPair;
+    private AuthenticationManager authenticationManager;
 
-    public JwkSetConfiguration(AuthenticationConfiguration authenticationConfiguration,
-                               KeyPair keyPair) throws Exception {
+    @Value("${security.oauth2.provider.keystore-location}")
+    private String keyStoreLocation;
+
+    @Value("${security.oauth2.provider.keystore-pwd}")
+    private String keyStorePwd;
+
+    @Autowired
+    public JwkSetConfiguration(AuthenticationConfiguration authenticationConfiguration) throws Exception {
 
         this.authenticationManager = authenticationConfiguration.getAuthenticationManager();
-        this.keyPair = keyPair;
     }
 
-    // ... client configuration, etc.
-
     @Override
-    public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         // @formatter:off
         endpoints
                 .authenticationManager(this.authenticationManager)
@@ -38,14 +47,25 @@ public class JwkSetConfiguration extends AuthorizationServerConfigurerAdapter {
     }
 
     @Bean
-    public TokenStore tokenStore() {
+    public TokenStore tokenStore() throws Exception {
         return new JwtTokenStore(accessTokenConverter());
     }
 
     @Bean
-    public JwtAccessTokenConverter accessTokenConverter() {
+    public JwtAccessTokenConverter accessTokenConverter() throws GeneralSecurityException, IOException {
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-        converter.setKeyPair(this.keyPair);
+        converter.setKeyPair(getSigningKey());
         return converter;
     }
+
+    @Bean
+    public KeyPair getSigningKey() throws IOException, GeneralSecurityException {
+        if (isEmpty(keyStoreLocation)) {
+            throw new IllegalArgumentException("key store location cant be null");
+        }
+        PEMFile pemFile = new PEMFile(keyStoreLocation, keyStorePwd);
+        PublicKey publicKey = pemFile.getCertificates().get(0).getPublicKey();
+        return new KeyPair(publicKey, pemFile.getPrivateKey());
+    }
+
 }

@@ -1,8 +1,6 @@
 package com.realdolmen.oidc.provider.configuration;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,20 +16,17 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     private String clientId;
     @Value("${security.oauth2.client.client-secret}")
     private String clientSecret;
-    @Autowired
-    private ServerProperties serverProperties;
 
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        String baseUrl = serverProperties.getAddress() + ":" + serverProperties.getPort();
         clients
                 .inMemory()
                 .withClient(clientId)
                 .secret(passwordEncoder().encode(clientSecret))
-                .scopes("read write openid oidc:bric")
-                .authorizedGrantTypes("authorization_code")
-                .redirectUris("http://" + baseUrl + "/oauth/login/client-app");
+                .scopes("read", "write", "openid", "oidc:bric")
+                .authorizedGrantTypes("authorization_code", "password", "implicit")
+                .redirectUris("http://localhost:8081/login/oauth2/code/mock");
     }
 
     @Bean

@@ -1,5 +1,5 @@
 .idea/
-*/target/
+**/target/
 mock-oidc.iml
 */*.iml
 target/
