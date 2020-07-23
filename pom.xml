@@ -26,7 +26,6 @@
     <modules>
         <module>mock-resource-server</module>
         <module>mock-client</module>
-        <module>mock-authorization-server</module>
-        <module>mock-keycloak-server</module>
+        <module>mock-idp</module>
     </modules>
 </project>
