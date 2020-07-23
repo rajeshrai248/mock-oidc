@@ -3,12 +3,11 @@ package com.realdolmen.oidc.client.configuration;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
-@Configuration
+//@Configuration
 public class ClientConfiguration {
-    @Value("${spring.security.oauth2.client.provider.mock.tokenUri}")
+    @Value("${spring.security.oauth2.client.provider.mock.token-uri}")
     private String tokenUri;
 
     @Bean("oauth2RestTemplate")

@@ -1,23 +1,23 @@
 {
-  "id" : "baeldung",
-  "realm" : "baeldung",
-  "notBefore" : 0,
-  "revokeRefreshToken" : false,
-  "refreshTokenMaxReuse" : 0,
-  "accessTokenLifespan" : 300,
-  "accessTokenLifespanForImplicitFlow" : 900,
-  "ssoSessionIdleTimeout" : 1800,
-  "ssoSessionMaxLifespan" : 36000,
-  "ssoSessionIdleTimeoutRememberMe" : 0,
-  "ssoSessionMaxLifespanRememberMe" : 0,
-  "offlineSessionIdleTimeout" : 2592000,
-  "offlineSessionMaxLifespanEnabled" : false,
-  "offlineSessionMaxLifespan" : 5184000,
-  "accessCodeLifespan" : 60,
-  "accessCodeLifespanUserAction" : 300,
-  "accessCodeLifespanLogin" : 1800,
-  "actionTokenGeneratedByAdminLifespan" : 43200,
-  "actionTokenGeneratedByUserLifespan" : 300,
+  "id": "briciam",
+  "realm": "briciam",
+  "notBefore": 0,
+  "revokeRefreshToken": false,
+  "refreshTokenMaxReuse": 0,
+  "accessTokenLifespan": 300,
+  "accessTokenLifespanForImplicitFlow": 900,
+  "ssoSessionIdleTimeout": 1800000,
+  "ssoSessionMaxLifespan": 3600000,
+  "ssoSessionIdleTimeoutRememberMe": 0,
+  "ssoSessionMaxLifespanRememberMe": 0,
+  "offlineSessionIdleTimeout": 2592000,
+  "offlineSessionMaxLifespanEnabled": false,
+  "offlineSessionMaxLifespan": 5184000,
+  "accessCodeLifespan": 60,
+  "accessCodeLifespanUserAction": 300,
+  "accessCodeLifespanLogin": 1800,
+  "actionTokenGeneratedByAdminLifespan": 43200,
+  "actionTokenGeneratedByUserLifespan": 300,
   "enabled" : true,
   "sslRequired" : "external",
   "registrationAllowed" : false,
@@ -37,32 +37,34 @@
   "maxDeltaTimeSeconds" : 43200,
   "failureFactor" : 30,
   "roles" : {
-    "realm" : [ {
-      "id" : "3b6109f5-6e5a-4578-83c3-791ec3e2bf9e",
-      "name" : "offline_access",
-      "description" : "${role_offline-access}",
-      "composite" : false,
-      "clientRole" : false,
-      "containerId" : "baeldung",
-      "attributes" : { }
-    }, {
-      "id" : "0dd6a8c7-d669-4941-9ea1-521980e9c53f",
-      "name" : "uma_authorization",
-      "description" : "${role_uma_authorization}",
-      "composite" : false,
-      "clientRole" : false,
-      "containerId" : "baeldung",
-      "attributes" : { }
-    }, {
-      "id" : "ca962095-7f9b-49e2-a190-e391a0d4b704",
-      "name" : "user",
-      "composite" : false,
-      "clientRole" : false,
-      "containerId" : "baeldung",
-      "attributes" : { }
-    } ],
+    "realm" : [
+      {
+        "id": "3b6109f5-6e5a-4578-83c3-791ec3e2bf9e",
+        "name": "offline_access",
+        "description": "${role_offline-access}",
+        "composite": false,
+        "clientRole": false,
+        "containerId": "briciam",
+        "attributes": {}
+      },
+      {
+        "id": "0dd6a8c7-d669-4941-9ea1-521980e9c53f",
+        "name": "uma_authorization",
+        "description": "${role_uma_authorization}",
+        "composite": false,
+        "clientRole": false,
+        "containerId": "briciam",
+        "attributes": {}
+      },
+      {
+        "id": "ca962095-7f9b-49e2-a190-e391a0d4b704",
+        "name": "user",
+        "composite": false,
+        "clientRole": false,
+        "containerId": "briciam",
+        "attributes": {}
+      } ],
     "client" : {
-      "newClient" : [ ],
       "realm-management" : [ {
         "id" : "5d00243f-ceec-4b0c-995e-d86d5b8a0ae6",
         "name" : "view-clients",
@@ -294,77 +296,75 @@
   "webAuthnPolicyCreateTimeout" : 0,
   "webAuthnPolicyAvoidSameAuthenticatorRegister" : false,
   "webAuthnPolicyAcceptableAaguids" : [ ],
-  "users" : [ {
-    "id" : "a5461470-33eb-4b2d-82d4-b0484e96ad7f",
-    "createdTimestamp" : 1574174706812,
-    "username" : "john@test.com",
-    "enabled" : true,
-    "totp" : false,
-    "emailVerified" : false,
-    "credentials" : [ {
-      "id" : "024b62f1-3af0-49fc-a15f-e843b72e00df",
-      "type" : "password",
-      "createdDate" : 1574174719522,
-      "secretData" : "{\"value\":\"tfHk9estQfa27osLCY2QelpkL6Sm6rPS+iQ33ytPSD4p10Fk7ophI7ChERAnzDjVSmvdsZAttsg2Yr+8F4Gzfw==\",\"salt\":\"goh99WgI7T1ZuGdrKzNAeQ==\"}",
-      "credentialData" : "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\"}"
-    } ],
-    "disableableCredentialTypes" : [ ],
-    "requiredActions" : [ ],
-    "realmRoles" : [ "offline_access", "uma_authorization" ],
-    "clientRoles" : {
-      "account" : [ "manage-account", "view-profile" ]
-    },
-    "notBefore" : 0,
-    "groups" : [ ]
-  }, {
-    "id" : "22a4d9fe-194c-4c6e-841a-8a55b402459f",
-    "createdTimestamp" : 1580237252522,
-    "username" : "mike@other.com",
-    "enabled" : true,
-    "totp" : false,
-    "emailVerified" : false,
-    "credentials" : [ {
-      "id" : "73c8d1ca-d548-4e1a-a82d-2c1d0d3ee017",
-      "type" : "password",
-      "createdDate" : 1580237291489,
-      "secretData" : "{\"value\":\"fea4QiAzqmOctQGtJrKvoPRIUKLdQ5UKFIEPEQ7PYjTjxvucDZVk8yzXNfsDHvgpZ2rWiwsACgvsymdHnmru9w==\",\"salt\":\"nu5yJh98jz8cGLnLx36uvg==\"}",
-      "credentialData" : "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\"}"
-    } ],
-    "disableableCredentialTypes" : [ ],
-    "requiredActions" : [ ],
-    "realmRoles" : [ "offline_access", "uma_authorization" ],
-    "clientRoles" : {
-      "account" : [ "manage-account", "view-profile" ]
-    },
-    "notBefore" : 0,
-    "groups" : [ ]
-  } ],
-  "scopeMappings" : [ {
-    "clientScope" : "offline_access",
-    "roles" : [ "offline_access" ]
-  } ],
-  "clients" : [ {
-    "id" : "12eebf0b-a3eb-49f8-9ecf-173cf8a00145",
-    "clientId" : "account",
-    "name" : "${client_account}",
-    "rootUrl" : "${authBaseUrl}",
-    "baseUrl" : "/realms/baeldung/account/",
-    "surrogateAuthRequired" : false,
-    "enabled" : true,
-    "clientAuthenticatorType" : "client-secret",
-    "secret" : "**********",
-    "defaultRoles" : [ "manage-account", "view-profile" ],
-    "redirectUris" : [ "/realms/baeldung/account/*" ],
-    "webOrigins" : [ ],
-    "notBefore" : 0,
-    "bearerOnly" : false,
-    "consentRequired" : false,
-    "standardFlowEnabled" : true,
-    "implicitFlowEnabled" : false,
-    "directAccessGrantsEnabled" : false,
-    "serviceAccountsEnabled" : false,
-    "publicClient" : false,
-    "frontchannelLogout" : false,
+  "users" : [
+    {
+      "id": "a5461470-33eb-4b2d-82d4-b0484e96ad7f",
+      "createdTimestamp": 1574174706812,
+      "username": "bric-user",
+      "enabled": true,
+      "totp": false,
+      "emailVerified": false,
+      "credentials": [
+        {
+          "id": "024b62f1-3af0-49fc-a15f-e843b72e00df",
+          "type": "password",
+          "createdDate": 1574174719522,
+          "secretData": "{\"value\":\"tfHk9estQfa27osLCY2QelpkL6Sm6rPS+iQ33ytPSD4p10Fk7ophI7ChERAnzDjVSmvdsZAttsg2Yr+8F4Gzfw==\",\"salt\":\"goh99WgI7T1ZuGdrKzNAeQ==\"}",
+          "credentialData": "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\"}"
+        }
+      ],
+      "disableableCredentialTypes": [],
+      "requiredActions": [],
+      "realmRoles": [
+        "offline_access",
+        "uma_authorization"
+      ],
+      "clientRoles": {
+        "account": [
+          "manage-account",
+          "view-profile"
+        ]
+      },
+      "notBefore": 0,
+      "groups": []
+    }
+  ],
+  "scopeMappings": [
+    {
+      "clientScope": "offline_access",
+      "roles": [
+        "offline_access"
+      ]
+    }
+  ],
+  "clients": [
+    {
+      "id": "12eebf0b-a3eb-49f8-9ecf-173cf8a00145",
+      "clientId": "account",
+      "name": "${client_account}",
+      "rootUrl": "${authBaseUrl}",
+      "baseUrl": "/realms/briciam/account/",
+      "surrogateAuthRequired": false,
+      "enabled": true,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "**********",
+      "defaultRoles": [
+        "manage-account",
+        "view-profile"
+      ],
+      "redirectUris": [
+        "/realms/briciam/account/*"
+      ],
+      "webOrigins": [],
+      "notBefore": 0,
+      "bearerOnly": false,
+      "consentRequired": false,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "publicClient": false,
+      "frontchannelLogout": false,
     "protocol" : "openid-connect",
     "attributes" : { },
     "authenticationFlowBindingOverrides" : { },
@@ -424,35 +424,40 @@
     "nodeReRegistrationTimeout" : 0,
     "defaultClientScopes" : [ "web-origins", "role_list", "roles", "profile", "email" ],
     "optionalClientScopes" : [ "address", "phone", "offline_access", "microprofile-jwt" ]
-  }, {
-    "id" : "b88ce206-63d6-43b6-87c9-ea09d8c02f32",
-    "clientId" : "newClient",
-    "surrogateAuthRequired" : false,
-    "enabled" : true,
-    "clientAuthenticatorType" : "client-secret",
-    "secret" : "newClientSecret",
-    "redirectUris" : [ "http://localhost:8082/new-client/login/oauth2/code/custom",
-    "http://localhost:8089/",
-    "http://localhost:8089/auth/redirect/"],
-    "webOrigins" : [ "+" ],
-    "notBefore" : 0,
-    "bearerOnly" : false,
-    "consentRequired" : false,
-    "standardFlowEnabled" : true,
-    "implicitFlowEnabled" : true,
-    "directAccessGrantsEnabled" : true,
-    "serviceAccountsEnabled" : false,
-    "publicClient" : false,
-    "frontchannelLogout" : false,
-    "protocol" : "openid-connect",
-    "attributes" : {
-      "saml.assertion.signature" : "false",
-      "saml.force.post.binding" : "false",
-      "saml.multivalued.roles" : "false",
-      "saml.encrypt" : "false",
-      "saml.server.signature" : "false",
-      "saml.server.signature.keyinfo.ext" : "false",
-      "exclude.session.state.from.auth.response" : "false",
+  },
+    {
+      "id": "b88ce206-63d6-43b6-87c9-ea09d8c02f32",
+      "clientId": "bricClient",
+      "surrogateAuthRequired": false,
+      "enabled": true,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "secret",
+      "redirectUris": [
+        "http://localhost:8081/login/oauth2/code/mockClient",
+        "http://localhost:8081/",
+        "http://localhost:8081/auth/redirect/"
+      ],
+      "webOrigins": [
+        "+"
+      ],
+      "notBefore": 0,
+      "bearerOnly": false,
+      "consentRequired": true,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": true,
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": false,
+      "publicClient": true,
+      "frontchannelLogout": false,
+      "protocol": "openid-connect",
+      "attributes": {
+        "saml.assertion.signature": "false",
+        "saml.force.post.binding": "false",
+        "saml.multivalued.roles": "false",
+        "saml.encrypt": "false",
+        "saml.server.signature": "false",
+        "saml.server.signature.keyinfo.ext": "false",
+        "exclude.session.state.from.auth.response": "false",
       "saml_force_name_id_format" : "false",
       "saml.client.signature" : "false",
       "tls.client.certificate.bound.access.tokens" : "false",
@@ -491,27 +496,32 @@
     "nodeReRegistrationTimeout" : 0,
     "defaultClientScopes" : [ "web-origins", "role_list", "roles", "profile", "email" ],
     "optionalClientScopes" : [ "address", "phone", "offline_access", "microprofile-jwt" ]
-  }, {
-    "id" : "8e358d2f-b085-4243-8e6e-c175431e5eeb",
-    "clientId" : "security-admin-console",
-    "name" : "${client_security-admin-console}",
-    "rootUrl" : "${authAdminUrl}",
-    "baseUrl" : "/admin/baeldung/console/",
-    "surrogateAuthRequired" : false,
-    "enabled" : true,
-    "clientAuthenticatorType" : "client-secret",
-    "secret" : "**********",
-    "redirectUris" : [ "/admin/baeldung/console/*" ],
-    "webOrigins" : [ "+" ],
-    "notBefore" : 0,
-    "bearerOnly" : false,
-    "consentRequired" : false,
-    "standardFlowEnabled" : true,
-    "implicitFlowEnabled" : false,
-    "directAccessGrantsEnabled" : false,
-    "serviceAccountsEnabled" : false,
-    "publicClient" : true,
-    "frontchannelLogout" : false,
+  },
+    {
+      "id": "8e358d2f-b085-4243-8e6e-c175431e5eeb",
+      "clientId": "security-admin-console",
+      "name": "${client_security-admin-console}",
+      "rootUrl": "${authAdminUrl}",
+      "baseUrl": "/admin/briciam/console/",
+      "surrogateAuthRequired": false,
+      "enabled": true,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "**********",
+      "redirectUris": [
+        "/admin/briciam/console/*"
+      ],
+      "webOrigins": [
+        "+"
+      ],
+      "notBefore": 0,
+      "bearerOnly": false,
+      "consentRequired": false,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "publicClient": true,
+      "frontchannelLogout": false,
     "protocol" : "openid-connect",
     "attributes" : { },
     "authenticationFlowBindingOverrides" : { },

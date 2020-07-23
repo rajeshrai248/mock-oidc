@@ -5,4 +5,5 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          public-key-location: classpath:oidc.pub
+          issuer-uri: http://localhost:8083/auth/realms/briciam
+          jwk-set-uri: http://localhost:8083/auth/realms/briciam/protocol/openid-connect/certs

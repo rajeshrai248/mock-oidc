@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class DummyResourceController {
-    @GetMapping(path = "/api/hi")
+    @GetMapping(path = "/demo/hi")
     public ResponseEntity<String> verifyCodeResponse() {
         return ResponseEntity.ok("Hi There");
 

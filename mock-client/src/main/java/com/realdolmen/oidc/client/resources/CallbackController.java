@@ -1,7 +1,7 @@
 package com.realdolmen.oidc.client.resources;
 
-import java.util.Collections;
-import java.util.Map;
+import com.google.common.collect.ImmutableMap;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
@@ -10,12 +10,12 @@ import org.springframework.security.oauth2.core.endpoint.OAuth2AccessTokenRespon
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-import com.google.common.collect.ImmutableMap;
-import lombok.extern.slf4j.Slf4j;
 
-@RestController
+import java.util.Collections;
+import java.util.Map;
+
+//@RestController
 @Slf4j
 public class CallbackController {
 
@@ -26,7 +26,7 @@ public class CallbackController {
         this.oauth2RestTemplate = oauth2RestTemplate;
     }
 
-    @GetMapping(path = "/api/login")
+    @GetMapping(path = "/demo/login")
     public ResponseEntity<OAuth2AccessTokenResponse> verifyCodeResponse(@RequestParam(
             name = "code") final String code, @RequestParam(
             name = "state") final String state) {
@@ -35,7 +35,7 @@ public class CallbackController {
 
     }
 
-    @GetMapping("/user")
+    @GetMapping("/demo/user")
     public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
         return Collections.singletonMap("name", principal.getAttribute("name"));
     }

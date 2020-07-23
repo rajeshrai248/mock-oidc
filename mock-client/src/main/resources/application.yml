@@ -2,24 +2,29 @@ server:
   port: 8081
 logging:
   level:
+    root: info
     org.springframework.security.oauth: trace
+provider:
+  port: 8083
 spring:
   security:
     oauth2:
       client:
         provider:
           mock:
-            authorizationUri: http://localhost:9443/oauth2/authorize
-            tokenUri: http://localhost:9443/oauth2/token
-            userInfoUri: http://localhost:9443/oauth2/userinfo
-            jwkSetUri: http://localhost:9443/oauth2/keys
+            authorization-uri: http://localhost:${provider.port}/auth/realms/briciam/protocol/openid-connect/auth
+            token-uri: http://localhost:${provider.port}/auth/realms/briciam/protocol/openid-connect/token
+            user-info-uri: http://localhost:${provider.port}/auth/realms/briciam/protocol/openid-connect/userinfo
+            jwk-set-uri: http://localhost:${provider.port}/auth/realms/briciam/protocol/openid-connect/certs
+            user-name-attribute: preferred_username
         registration:
           mockClient:
+            client-id: bricClient
+            client-secret: "7c12c7e6-454e-4c0c-a89c-522bcb4f8d00"
             provider: mock
-            client-id: "client"
-            client-secret: "Secr3t"
             authorization-grant-type: "authorization_code"
-            redirectUri: http://localhost:8081/login/oauth2/code/mock
+            redirectUri: '{baseUrl}/login/oauth2/code/{registrationId}'
             scope:
-              - "openid"
-              - "profile"
+              - openid
+              - profile
+              - email

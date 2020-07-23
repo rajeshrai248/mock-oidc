@@ -1,6 +1,5 @@
 server:
   port: 8083
-
 spring:
   datasource:
     username: sa
@@ -10,6 +9,10 @@ keycloak:
   server:
     contextPath: /auth
     adminUser:
-      username: bael-admin
-      password: admin123456
-    realmImportFile: baeldung-realm.json
+      username: bric-admin
+      password: password
+    realmImportFile: briciam-realm.json
+logging:
+  level:
+    root: info
+    org.keycloak: debug
