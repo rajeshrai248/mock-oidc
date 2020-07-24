@@ -24,8 +24,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>mock-resource-server</module>
-        <module>mock-client</module>
+        <module>mock-sp</module>
         <module>mock-idp</module>
     </modules>
 </project>

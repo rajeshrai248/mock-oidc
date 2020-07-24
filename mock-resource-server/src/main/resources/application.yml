@@ -1,9 +1,0 @@
-server:
-  port: 8085
-spring:
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://localhost:8083/auth/realms/briciam
-          jwk-set-uri: http://localhost:8083/auth/realms/briciam/protocol/openid-connect/certs

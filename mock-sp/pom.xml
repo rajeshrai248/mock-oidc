@@ -9,8 +9,8 @@
     <version>1.0.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>mock-client</artifactId>
-  <name>Mock Oauth Client</name>
+  <artifactId>mock-sp</artifactId>
+  <name>Mock Oauth Service Provider(OIDC based)</name>
 
   <dependencies>
     <dependency>

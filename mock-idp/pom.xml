@@ -10,7 +10,7 @@
         <artifactId>mock-oidc</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    <name>Mock IDP Server</name>
+    <name>Mock IDP Server(OIDC based)</name>
     <properties>
         <!-- non-dependencies -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
