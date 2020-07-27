@@ -19,8 +19,8 @@ spring:
             user-name-attribute: preferred_username
         registration:
           mockClient:
-            client-id: bricClient
-            client-secret: "7c12c7e6-454e-4c0c-a89c-522bcb4f8d00"
+            client-id: bric-client
+            client-secret: "secret"
             provider: mock
             authorization-grant-type: "authorization_code"
             redirectUri: '{baseUrl}/login/oauth2/code/{registrationId}'

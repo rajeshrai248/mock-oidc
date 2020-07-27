@@ -15,6 +15,7 @@ import com.readlolmen.oauth2.oidc.properties.KeycloakServerProperties;
 @SpringBootApplication(exclude = LiquibaseAutoConfiguration.class)
 @EnableConfigurationProperties(KeycloakServerProperties.class)
 public class AuthorizationServerApp {
+
     private static final Logger LOG = LoggerFactory.getLogger(AuthorizationServerApp.class);
 
     public static void main(String[] args) throws Exception {
@@ -22,13 +23,12 @@ public class AuthorizationServerApp {
     }
 
     @Bean
-    public ApplicationListener<ApplicationReadyEvent> onApplicationReadyEventListener(
-            ServerProperties serverProperties, KeycloakServerProperties keycloakServerProperties) {
+    public ApplicationListener<ApplicationReadyEvent> onApplicationReadyEventListener(ServerProperties serverProperties,
+            KeycloakServerProperties keycloakServerProperties) {
         return (evt) -> {
             Integer port = serverProperties.getPort();
             String keycloakContextPath = keycloakServerProperties.getContextPath();
-            LOG.info("Embedded Keycloak started: http://localhost:{}{} to use keycloak",
-                    port, keycloakContextPath);
+            LOG.info("Embedded Keycloak started: http://localhost:{}{} to use keycloak", port, keycloakContextPath);
         };
     }
 }

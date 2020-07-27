@@ -12,6 +12,17 @@ keycloak:
       username: bric-admin
       password: password
     realmImportFile: briciam-realm.json
+    clients:
+      bric-client:
+        client-name: "BRIC Client"
+        client-authentication-type: "client-secret"
+        client-secret: "secret"
+        client-protocol: "openid-connect"
+        base-url: "http://localhost:8081"
+        client-redirect-uris:
+          - "/login/oauth2/code/mockClient"
+          - "/"
+          - "/auth/redirect/"
 logging:
   level:
     root: info
