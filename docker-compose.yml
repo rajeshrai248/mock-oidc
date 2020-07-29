@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  sp:
+    image: rajeshrai248/mock-sp:latest
+    build:
+      context: mock-sp
+    ports:
+      - "8081:8081"
+    depends_on:
+      - idp
+  idp:
+    image: rajeshrai248/mock-idp:latest
+    build:
+      context: mock-idp
+    ports:
+      - "8083:8083"
